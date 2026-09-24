@@ -1,5 +1,6 @@
 define([
-], function() {
+  'lodash'
+], function(_) {
 
   var outputFile = null;
   
@@ -11,26 +12,24 @@ define([
       var names = [];
 
       _.each(lines, function (line) {
-        tokens = [];
+        var tokens = []; // Added 'var' to prevent implicit global crash
 
-        if (line.length === 0) {
+        if (line.trim().length === 0) {
           return;
         }
 
-        if (file.type === 'text/csv') {
+        if (file.type === 'text/csv' || file.name.indexOf('.csv') !== -1) {
           tokens = line.split(',');
-        } else if (file.type === 'text/tsv') {
+        } else if (file.type === 'text/tsv' || file.name.indexOf('.tsv') !== -1) {
           tokens = line.split('\t');
         } else {
           tokens.push(line);
         }
 
-        var name;
+        var name = tokens[0].trim();
         var value = null; 
   
-        name = tokens[0];
-
-        if (tokens.length >= 2)  {
+        if (tokens.length >= 2 && tokens[1].trim() !== '')  {
           value = parseFloat(tokens[1]);
         }
 
