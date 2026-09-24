@@ -2,7 +2,6 @@ define([
   'lodash'
 ], function (_) {
   var allCards = [];
-  var listeners = [];
   
   var add = function (name, value) {
     allCards.push({ name: name, value: value });
