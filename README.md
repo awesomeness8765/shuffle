@@ -4,16 +4,15 @@
 you choose to provide numerical values for the items, then it will also
 maintain a priority order in the random results. 
 
-Visit [here](http://wallaceicy06.github.io/shuffle) for a live version of the
+Visit [here](http://awesomeness8765.github.io/shuffle) for a live version of the
 app.
 
-## Usage
+## Note
 
-**Note:** As of March 5, 2017, it appears that the file upload feature does not
-work properly on Windows. This is due to a bug with the file input tag
-behavior and affects all major web browswers on Windows. This bug is summarized
-in this Stack Overflow [post](http://stackoverflow.com/questions/37274976/type-property-of-file-input-not-being-set-in-windows),
-which unfortunately as of today appears to have no solution.
+I did not originally create this website- I simply forked it and fixed the website
+as it had become broken with time and age. 
+
+## Usage
 
 1. Prepare a text file of items (and numerical values, if you desire), one per
 line. *Shuffle* supports the following formats:
@@ -51,7 +50,7 @@ And as with most projects, I procrastinated and left it until the last second.
 There are certainly rough edges, but it is nevertheless a decent program for
 something that was hacked together in a week. :)
 
-## Credits
+##  Original Credits
 
 Thanks are due to the [Materialize](https://github.com/Dogfalo/materialize) and
 [Shuffle](https://github.com/daneden/animate.css) libraries, without which
