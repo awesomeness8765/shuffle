@@ -1,10 +1,10 @@
 define([
   'jquery',
   'lodash',
-  'materialize',
   'models/cards',
-  'models/fileIO'
-], function ($, _, materialize, cards, io) {
+  'models/fileIO',
+  'materialize' // Loaded last to prevent argument shifting
+], function ($, _, cards, io) {
   var NAMES_DELAY = 100;
   var CARD_TEMPLATE = _.template('<div class="animated <%= animation %> name-card col s12 m12"><div class="name-card card-panel teal"><span class="white-text"><%- title %></span><span class="right white-text"><%- value %></span></div></div>');
   var ANIMATION_END = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -13,7 +13,7 @@ define([
     animateCss: function (animationName, callback) {
       $(this).addClass('animated ' + animationName).one(ANIMATION_END, function() {
       $(this).removeClass('animated ' + animationName);
-        callback();
+        if (callback) callback();
       });
     }
   });
@@ -28,7 +28,7 @@ define([
     $('#btn-import').click(function () {
       var fileChooser = document.getElementById('file-chooser');
 
-      if (fileChooser.files.length == 0) {
+      if (fileChooser.files.length === 0) {
         return;
       }
 
@@ -37,7 +37,9 @@ define([
 
       if (file.type !== 'text/csv' 
          && file.type !== 'text/tsv'
-         && file.type !== 'text/plain') {
+         && file.type !== 'text/plain'
+         && file.name.indexOf('.csv') === -1
+         && file.name.indexOf('.txt') === -1) {
         return;
       }
 
